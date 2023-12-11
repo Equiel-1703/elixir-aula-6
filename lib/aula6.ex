@@ -24,4 +24,35 @@ defmodule Aula6 do
   end
 
   def min_e_max(x, y, z), do: {min(x, y, z), max(x, y, z)}
+
+  def soma_lista_tuplas([]), do: 0
+
+  def soma_lista_tuplas([{a, b} | t]) do
+    a + b + soma_lista_tuplas(t)
+  end
+
+  def zip([], _l_2), do: []
+  def zip(_l_1, []), do: []
+
+  def zip([h_1 | t_1], [h_2 | t_2]) do
+    [{h_1, h_2} | zip(t_1, t_2)]
+  end
+
+  defp unzip_esq([]), do: []
+
+  defp unzip_esq([{a, _b} | t]) do
+    [a | unzip_esq(t)]
+  end
+
+  defp unzip_dir([]), do: []
+
+  defp unzip_dir([{_a, b} | t]) do
+    [b | unzip_dir(t)]
+  end
+
+  def unzip([]), do: []
+
+  def unzip(l) do
+    {unzip_esq(l), unzip_dir(l)}
+  end
 end
